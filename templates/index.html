@@ -1,0 +1,57 @@
+{% include "header.html" %}
+<!-- Page Header-->
+<header
+  class="masthead"
+  style="background-image: url({{url_for('static', filename='/assets/img/home-bg.jpg')}})"
+>
+  <div class="container position-relative px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <div
+          class="site-heading d-flex justify-content-center align-items-center"
+        >
+          <!-- Replacing the text with the logo -->
+          <img
+            src="{{ url_for('static', filename='assets/img/wirip-logo.png') }}"
+            alt="Wirip Logo"
+            class="header-logo"
+          />
+        </div>
+        <span class="subheading text-center">
+          When it rains it pours. POUR UP HOW YOU FEEL HERE!
+        </span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Main Content-->
+<div class="container px-4 px-lg-5">
+  <div class="row gx-4 gx-lg-5 justify-content-center">
+    <div class="col-md-10 col-lg-8 col-xl-7">
+      {% for blog in all_blogs %}
+      <!-- Post preview-->
+      <div class="post-preview">
+        <a href="{{url_for('get_post', id= blog.id)}}">
+          <h2 class="post-title">{{ blog.title }}</h2>
+          <h3 class="post-subtitle">{{ blog.subtitle }}</h3>
+        </a>
+        <p class="post-meta">
+          Posted by
+          <a href="#!">{{ blog.author }}</a>
+          on {{ today }}
+        </p>
+      </div>
+      <!-- Divider-->
+      <hr class="my-4" />
+      {% endfor %}
+
+      <!-- Pager-->
+      <div class="d-flex justify-content-end mb-4">
+        <a class="btn btn-primary text-uppercase" href="#!">Older Posts →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% include "footer.html" %}
