@@ -1,1 +1,0 @@
-templates/ss.md
